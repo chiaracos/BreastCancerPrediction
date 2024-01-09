@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage{url}
+\usepackage{graphicx}
+
+\title{Breast Cancer Prediction}
+\author{Chiara Coscarelli\\[1ex]matr. 0512113869}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+\section{Introduzione}
+
+Il cancro al seno (BC) è uno dei tumori più comuni tra le donne in tutto il mondo e, secondo le statistiche globali, rappresenta la maggior parte dei nuovi casi di cancro e dei decessi correlati al cancro, rendendolo un problema di salute pubblica significativo nella società odierna. La diagnosi precoce del BC può migliorare significativamente la prognosi e le possibilità di sopravvivenza, poiché può promuovere un trattamento clinico tempestivo per i pazienti. Una classificazione più accurata dei tumori benigni può evitare che i pazienti si sottopongano a trattamenti non necessari. Pertanto, la diagnosi corretta di BC e la classificazione dei pazienti in gruppi maligni o benigni è oggetto di molte ricerche.  <ADDlink al GitHub>
+
+
+\subsection{Obiettivi}
+Questo progetto di Fondamenti di Intelligenza Artificiale, il mio primo approccio in questo ambito, mira a osservare quali caratteristiche sono più utili nel predire il cancro maligno o benigno e a vedere le tendenze generali che potrebbero aiutarci nella selezione del modello. L’obiettivo è classificare se il cancro al seno è benigno o maligno. Ho scelto questa tematica perché relativamente semplice, e quindi in grado di farmi apprendere il più possibile le basi del Machine Learning.
+Gli obiettivi principali includono:
+\begin{itemize}
+    \item L'analisi approfondita dei dati estrapolati da un dataset.
+    \item L'identificazione di feature associate alle diagnosi.
+    \item L'implementazione di un modello di apprendimento in grado di calcolare la probabilità che un tumore al seno sia benigno o maligno.
+\end{itemize}
+
+\subsection{Specifica PEAS}
+\begin{itemize}
+    \item Performance (misure di prestazione adottate per valutare l’operato di un agente), nel mio caso
+    verranno valutate la precisione di classificazione e l’accuratezza.
+    \item Environment (elementi che formano l’ambiente), nel mio caso è costituito dai dati clinici dei pazienti, inclusi parametri e misure relative al cancro al seno.
+    \item Actuators (attuatori disponibili all’agente per intraprendere le azioni), nel mio caso sarà la capacità di predirre la presenza o assenza di cancro al seno.
+    \item Sensors (sensori attraverso i quali l’agente riceve gli input percettivi), nel mio caso l’agente va ad acquisire dati clinici del paziente, tra cui risultati di esami, misure e caratteristiche correlate al cancro al seno.
+\end{itemize}
+
+\subsection{Caratteristiche dell'ambiente}
