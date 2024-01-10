@@ -20,7 +20,7 @@ Il codice, la presentazione e la documentazione, si possono trovare presso tale 
 \url{https://github.com/chiaracos/BreastCancerPrediction}
 
 
-\subsection{Obiettivi}
+\subsection{Obbiettivi}
 Questo progetto di Fondamenti di Intelligenza Artificiale, il mio primo approccio in questo ambito, mira a osservare quali caratteristiche sono più utili nel predire il cancro maligno o benigno e a vedere le tendenze generali che potrebbero aiutarci nella selezione del modello. L’obiettivo è classificare se il cancro al seno è benigno o maligno. Ho scelto questa tematica perché relativamente semplice, e quindi in grado di farmi apprendere il più possibile le basi del Machine Learning.
 Gli obiettivi principali includono:
 \begin{itemize}
@@ -117,11 +117,11 @@ In questa fase vanno corretti i problemi individuati in fase di Data understandi
 Quindi, innanzitutto, ho eliminato completamente la colonna dal dataset poichè era completamente vuota. Successivamente ho sostituito le stringhe ”B” e ”M” della colonna diagnosi rispettivamente con i valori 0 e 1, per garantire la compatibilità con gli algoritmi di classificazione binaria. Infine, ho controllato se fossero presenti valori nulli e valori duplicati.Nel mio caso non ce ne sono.
 
 \subsection{Feature scaling}
-In questa fase si vanno ad utilizzare delle tecniche per normalizzare o scalare i valori delle caratteristiche in modo da avere una scala uniforme. Questo serve per evitare che caratteristiche con scale molto diverse influenzino negativamente gli algoritmi di apprendimento. Questo può essere ottenuto normalizzando.Prima di scalare i dati però ho fatto lo split del Dataset, ovvero dividere l’insieme di partenza in due sottoinsiemi: uno perl’addestramento ed uno per il testing per prevenire problemi di data Leakage.
+In questa fase si vanno ad utilizzare delle tecniche per normalizzare o scalare i valori delle caratteristiche in modo da avere una scala uniforme. Questo serve per evitare che caratteristiche con scale molto diverse influenzino negativamente gli algoritmi di apprendimento. Ciò può essere ottenuto normalizzando.Prima di scalare i dati però ho fatto lo split del Dataset, ovvero ho diviso l’insieme di partenza in due sottoinsiemi: uno per l’addestramento ed uno per il testing per prevenire problemi di data Leakage.
 Infatti, se si esegue lo scaling prima di suddividere il dataset in set di addestramento e testing, potrebbe verificarsi un problema noto come "data leakage" (fuga di dati). Lo scaling basato sull'intero dataset potrebbe incorporare informazioni del set di testing nel set di addestramento, influenzando erroneamente le prestazioni del modello durante la fase di valutazione.
 
 \subsection{Feature selection}
-La feature selection `e il processo in cui si va a scegliere un sottoinsieme delle caratteristiche più
+La feature selection è il processo in cui si va a scegliere un sottoinsieme delle caratteristiche più
 rilevanti dai dati originali per andare a ridurre la complessità del modello. Qui entra in gioco il
 Feature Engineering ovvero il processo nel quale il progettista utilizza la propria conoscenza del
 dominio per determinare le feature e dare piu o meno enfasi ad esse.
@@ -140,7 +140,7 @@ coppie di variabili nel dataset, consentendo di individuare facilmente relazioni
     \label{fig:enter-label}
 \end{figure}
 
-Nel mio caso, dalla matrice di correlazione possiamo notare che ci sono alcune variabili altamente correlate, ovvero che contengono valori simili che possono portare problemi di multicollinearità nei modelli, quindi possiamo considerare di eliminarne una.Per scegliere quale tra queste eliminare sono andata a verificare come ciascuna delle variabili è correlata con la variabile dipendente, e ho deciso di mantenere la variabile maggiormente correlata alla variabile dipendete.In questo modo, si può portare il modello ad un miglioramento delle prestazioni.
+Nel mio caso, dalla matrice di correlazione possiamo notare che ci sono alcune variabili altamente correlate, ovvero che contengono valori simili che possono portare problemi di multicollinearità nei modelli, quindi possiamo considerare di eliminarne una.Per scegliere quale tra queste eliminare sono andata a verificare come ciascuna delle variabili è correlata con la variabile dipendente, e ho deciso di mantenere la variabile maggiormente correlata alla variabile dipendente. In questo modo, si può portare il modello ad un miglioramento delle prestazioni.
 Tra le variabili altamente correlate abbiamo:
 \begin{itemize}
     \item  radius-mean, perimeter-mean e area-mean sono correlati tra loro e utilizziamo solo perimeter-mean.
@@ -179,7 +179,7 @@ Nella sezione precedente ho preparato i dati in modo da essere dati in input ad 
 
 
 \subsection{Scelta dell'algoritmo}
-Breast Cancer Prediction va a trattare un problema di apprendimento supervisionato, nel dettaglio un problema di classificazione. Difatti verrà fornito all’algoritmo un insieme di dati con rispettivo valore della variabile target, ed inoltre la variabile target potr`a assumere solamente un numero discreto di valori, nello specifico solamente due: 0 per ”B” e 1 per ”M”. Quindi i possibili algoritmi utilizzabili sono i seguenti: Regressione Logistica, Support Vector Machines, Kernel SVM, Nearest Neighbor, Random Forest, Naive Bayes e gli Decision Tree(DTC).
+Breast Cancer Prediction va a trattare un problema di apprendimento supervisionato, nel dettaglio un problema di classificazione. Difatti verrà fornito all’algoritmo un insieme di dati con rispettivo valore della variabile target, ed inoltre la variabile target potrà assumere solamente un numero discreto di valori, nello specifico solamente due: 0 per ”B” e 1 per ”M”. Quindi i possibili algoritmi utilizzabili sono i seguenti: Regressione Logistica, Support Vector Machines, Kernel SVM, Nearest Neighbor, Random Forest, Naive Bayes e gli Decision Tree(DTC).
 Tuttavia ho concentrato la mia scelta solo sui due algortimi visti a lezione, ovvero:
 \begin{itemize}
     \item Naive Bayes
@@ -194,14 +194,14 @@ In questa sezione procedo ad addestrare il modello in base all’algoritmo scelt
 migliori.
 
 \subsection{Native Bayes}
-L’algoritmo Naive Bayes `e un algoritmo di classificazione basato sul teorema di Bayes, che
+L’algoritmo Naive Bayes è un algoritmo di classificazione basato sul teorema di Bayes, che
 riguarda la probabilità condizionata. Si parla di ”naive” perchè tale algortimo considera l’indipendenza tra le caratteristiche, ciò semplifica i calcoli e rende l’algoritmo veloce. Ci sono diverse varianti del Naive Bayes, tra cui:
 \begin{itemize}
     \item Multinomial Naive Bayes (MNB)
     \item Gaussian Naive Bayes (GNB)
     \item Bernoulli Naive Bayes (BNB)
 \end{itemize}
-Tali differiscono nelle loro ipotesi sulla distribuzione delle caratteristiche, ovvero la probabilit`a delle diverse features condizionate alle classi di output. Ad esempio l’MNB `e particolarmente utile per problemi di classificazione di testi, il GNB per dati continui, ed infine il BNB per dati binari. Anche qui ho adottato la valutazione empirica, andandoli a provare tutti!
+Tali differiscono nelle loro ipotesi sulla distribuzione delle caratteristiche, ovvero la probabilità delle diverse features condizionate alle classi di output. Ad esempio l’MNB è particolarmente utile per problemi di classificazione di testi, il GNB per dati continui, ed infine il BNB per dati binari. Anche qui ho adottato la valutazione empirica, andandoli a provare tutti.
 Queste sono le matrici di confusione che ho ottenuto:
 \begin{center}
   \includegraphics[height=8cm]{MNBmod.png}
@@ -212,7 +212,7 @@ Queste sono le matrici di confusione che ho ottenuto:
 \begin{center}
   \includegraphics[height=8cm]{BNBmod.png}
 \end{center}
-Successivamente a partire dalle matrici di confusione, che esprimono al loro interno il numero di True Positive (alto a sinistra), True Negative (basso a destra), False Positive (alto a destra), False Negative (basso a sinistra) sono andato anche a calcolare alcune metriche di valutazione, ovvero Precisione,Recall e Accuratezza; che vanno calcolate proprio usando gli indicatori espressi dalle matrici. Il mio obiettivo `e andare a massimizzare tutte e tre le metriche.
+Successivamente, a partire dalle matrici di confusione, che esprimono al loro interno il numero di True Positive (alto a sinistra), True Negative (basso a destra), False Positive (alto a destra), False Negative (basso a sinistra) sono andato anche a calcolare alcune metriche di valutazione, ovvero Precisione,Recall e Accuratezza; che vanno calcolate proprio usando gli indicatori espressi dalle matrici. Il mio obbiettivo è andare a massimizzare tutte e tre le metriche.
 Risultati ottenuti:
 \begin{center}
   \includegraphics[height=11cm]{valOtten.png}
@@ -225,8 +225,8 @@ tali indicatori.
     \item La precision misura la proporzione di casi positivi effettivamente positivi tra tutte le predizioni positive fatte dal modello.
     \item L'accuratezza misura la proporzione complessiva di predizioni corrette fatte dal modello rispetto al totale delle predizioni.
 \end{itemize}
-Da come emerge dai valori ottenuti, il classificatore Naive Bayes GNB ha ottenuto ottimi risultati su tutte le metriche. Una particolarità osservabile `è che il Naive Bayes BNB ha ottenuto una precisione pari a 1 questo perchè non ci sono falsi positivi nel suo output,a sfavore di una recall pari a 0. In altre parole, non riesce a catturare alcuna delle istanze appartenenti alla classe positiva (True Positive, TP).
-Nel mio caso il fatto che la recall nel Naive Bayes BNB è pari a 0, significa che il modello non è riuscito a catturare nessun caso positivo (nessun caso di tumore maligno) tra quelli effettivamente presenti nel dataset.Per questo motivo questo modello non supererà la fase di validazione.Quindi tra i due rimanenti prediligo il classificatore Native Bayes GNG.
+Da come emerge dai valori ottenuti, il classificatore Naive Bayes GNB ha ottenuto ottimi risultati su tutte le metriche. Una particolarità osservabile è che il Naive Bayes BNB ha ottenuto una precisione pari a 1 questo perchè non ci sono falsi positivi nel suo output,a sfavore di una recall pari a 0. In altre parole, non riesce a catturare alcuna delle istanze appartenenti alla classe positiva (True Positive, TP).
+Nel mio caso, il fatto che la recall nel Naive Bayes BNB è pari a 0, significa che il modello non è riuscito a catturare nessun caso positivo (nessun caso di tumore maligno) tra quelli effettivamente presenti nel dataset.Per questo motivo questo modello non supererà la fase di validazione.Quindi tra i due rimanenti prediligo il classificatore Native Bayes GNG.
 
 \newpage
 \subsection{Decision Tree DTC}
@@ -235,7 +235,7 @@ Il DTC è un classificatore che opera attraverso una struttura ad albero. Ogni n
   \includegraphics[height=8cm]{DTCmod.png}
 \end{center}
 
-Possiamo notare che l’algoritmo DTC ha un importante parametro: maxDepth, ovvero il numero massimodi livelli creati per l’albero. Per trovare la profondità massima ottimale ho rieseguito l’algoritmo più volte, andando a variare il parametro. Ho osservato che le performance in termini di precisione/accuratezza/recall sono aumentate fino ad una profondità pari a 3, per poi andare in stallo o peggiorare.
+Possiamo notare che l’algoritmo DTC ha un importante parametro: maxDepth, ovvero il numero massimo di livelli creati per l’albero. Per trovare la profondità massima ottimale ho rieseguito l’algoritmo più volte, andando a variare il parametro. Ho osservato che le performance in termini di precisione/accuratezza/recall sono aumentate fino ad una profondità pari a 3, per poi andare in stallo o peggiorare.
 
 
 \subsection{GNG VS DTC}
@@ -245,7 +245,7 @@ Visualizziamo e confrontiamo i dati del Native Bayes GNG e Decision Tree(DTC).
   \includegraphics[height=11cm]{GNBeFTC1.png}
 \end{center}
 
-Come si può notare i risultati ottenuti usando il GNG non sono dei migliori. Quindi la discrepanza tra le due valutazioni potrebbe essere data dal differente modo di operare dei due algoritmi. Gli alberi decisionali sono flessibili nel modellare relazioni complesse tra le feature e la variabile target. Come abbiamo visto  il nostro dataset ha feature complesse e relazioni non facilmente rappresentabili da regole decisionali semplici quindi il Decision Tree è in grado di catturare al meglio queste complessità. Il Native Bayes, invece, semplifica la complessità del problema assumendo un'indipendenza tra le varie caratteristiche. Questo `e un grafico che riporta i risultati ottenuti da tutti gli addestramenti
+Come si può notare i risultati ottenuti usando il GNG non sono dei migliori. Quindi la discrepanza tra le due valutazioni potrebbe essere data dal differente modo di operare dei due algoritmi. Gli alberi decisionali sono flessibili nel modellare relazioni complesse tra le feature e la variabile target. Come abbiamo visto  il nostro dataset ha feature complesse e relazioni non facilmente rappresentabili da regole decisionali semplici quindi il Decision Tree è in grado di catturare al meglio queste complessità. Il Native Bayes, invece, semplifica la complessità del problema assumendo un'indipendenza tra le varie caratteristiche. Questo è un grafico che riporta i risultati ottenuti da tutti gli addestramenti
 svolti:
 \begin{center}
   \includegraphics[height=8cm]{General.png}
@@ -281,3 +281,4 @@ In conclusione, posso affermare con certezza che il completamento di questo prog
 From Wikipedia. Decision tree learning.
 From Wikipedia. Naive bayes classifier.
 \end{document}
+
