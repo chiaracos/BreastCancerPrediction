@@ -66,7 +66,7 @@ Tale fase é composta da più punti:
 \begin{itemize}
     \item Acquisizione dei dati
     \item Esplorazione dei dati
-    \item Analisi della qualit`a dei dati
+    \item Analisi della qualità dei dati
 \end{itemize}
 
 \subsection{Acquisizione dei dati}
@@ -252,3 +252,32 @@ svolti:
 \end{center}
 
 Possiamo notare che l'algoritmo che si è comportato meglio è stato il Decision Tree(DTC)
+
+\newpage
+\section{Evaluation}
+In questa fase si va a valutare se i risultati sono chiari, se sono in linea con gli obiettivi e se rivelano
+delle prospettive aggiuntive alle quali non si era pensato, quindi si va a verificare la consistenza e la
+solidità dell’intero processo. Vado quindi ad esaminare più nel dettaglio i risultati che ho ottenuto dall’addestramento e dal testing del Decision Tree, che ha avuto le seguenti performance:
+\begin{center}
+  \includegraphics[height=5cm]{cattDTC1.png}
+\end{center}
+
+
+Per avere più chiara la bontà del modello ho effettuato un’ulteriore valutazione attraverso la ROC-AUC curve, che consente di visualizzare il trade-off tra sensibilità(true positive rate) e specificità(true negative rate).
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\linewidth]{ROC.png}
+  \label{fig:esempio}
+\end{figure}
+
+
+La linea diagonale rappresenta il risultato di una scelta casuale, quindi un qualunque modello utile deve essere al suo di sopra. Inoltre un buon modello deve posizionarsi in alto a sinistra, ovvero deve avere sensibilità elevata e basso tasso di falsi positivi, cio`e il modello deve riuscire  correttamente a predirre che un paziente ha il cancro al seno senza generare falsi positivi, ovvero predirre che un paziente ha il cancro al seno, ma in realtà non lo ha. Ultima non meno importante la AUC (Area sotto la curva) che fornisce una misura generale delle prestazioni del modello, ad esempio un’area di 1.0 indica un modello perfetto, mentre un’area di 0.5 indica una scelta casuale. Il mio modello ha ottenuto un valore pari a 0.96, che è un ottimo risultato. Quindi posso considerare la costruzione del modello e in generale dell’approccio completa.
+
+
+\section{Conclusioni}
+In conclusione, posso affermare con certezza che il completamento di questo progetto è stata un'esperienza gratificante e formativa. Attraverso la sfida di esplorare nuovi concetti nel campo del machine learning, ho migliorato le mie competenze, dal perfezionamento del linguaggio Python fino all'applicazione di librerie specifiche.
+
+\section{Rifermienti bibliografici}
+From Wikipedia. Decision tree learning.
+From Wikipedia. Naive bayes classifier.
+\end{document}
